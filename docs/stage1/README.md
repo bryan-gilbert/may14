@@ -20,5 +20,5 @@ Secure server
 6. ![checked] Firewall blocks all ports except 80 and 443 (and custom ssh)
 
 
-[checked]: ./images/checked-20.png "checked"
-[unchecked]: ./images/unchecked-20.png "unchecked"
+[checked]: ../images/checked-20.png "checked"
+[unchecked]: ../images/unchecked-20.png "unchecked"

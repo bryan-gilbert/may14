@@ -21,7 +21,7 @@ module.exports = {
         title: 'Stage1',
         children: [
           '/stage1/',
-          '/stage1/server'
+          '/stage1/server.md'
         ]
       }
     ]
