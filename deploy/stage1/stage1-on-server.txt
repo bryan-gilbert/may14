@@ -1,0 +1,101 @@
+
+> This is not a bash script file. Run these command one group at a time.
+
+# export PKS='replace with the contents of the public key file on your development box'
+export PKS='ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIrLLdQGnMofGqBWFnapwWORcxM4lU64bBmkVqWjq2VzrrBKzAhKgSSUzwOpRNV2yqusT46M+iMWt9rx1d9keEA='
+export UN=may14
+export UH=/home/$UN
+export PW=YzFmYWEw
+
+
+
+echo adding a favorite alias
+alias ll='ls -lahG'
+
+echo Set timezone
+timedatectl set-timezone America/Vancouver
+
+echo DigitalOcean recommends next line. See https://www.digitalocean.com/community/questions/debian-9-3-droplet-issues-with-useradd
+apt-get remove -y unscd
+
+echo Update system
+apt-get update & apt-get -y upgrade
+
+echo Installing essentials
+apt-get install -y sudo curl git-core
+
+addgroup ssh-access
+
+echo Create user: $UN
+# Create the user; add to group; create home directory (-m); set password hashed
+# useradd -G users,sudo,www-data,ssh-access -m -s /bin/bash -p $(echo $PW | openssl passwd -1 -stdin) $UN
+useradd -G users,sudo,ssh-access -m -s /bin/bash -p $(echo $PW | openssl passwd -1 -stdin) $UN
+
+echo Stash favourite alias in shell init for user
+echo "alias ll='ls -lahG'" >> $UH/.bashrc
+
+echo User created to remove the user created run
+echo   deluser $UN
+
+echo Show information about the user:
+getent passwd $UN
+id -Gn $UN
+
+echo Placing SSH keys into users home directory
+mkdir -p $UH/.ssh
+echo $PKS >> $UH/.ssh/authorized_keys
+cat $UH/.ssh/authorized_keys
+
+chmod 700 $UH/.ssh
+chmod 600 $UH/.ssh/*
+chown -R $UN:$UN $UH/.ssh
+
+
+> stop here and return to dev.  Return here but as the new may14 user
+
+sudo su
+# enter the user password to become sudoer
+
+
+# Secure access via ssh
+cd /etc/ssh
+sudo cp sshd_config sshd_config.bak
+sudo nano sshd_config
+
+> Add or change the following in sshd_config
+Port 8201
+PermitRootLogin no
+PasswordAuthentication no
+AllowGroups ssh-access
+# add this to avoid problem with multiple sshd processes
+ClientAliveInterval 600
+ClientAliveCountMax 3
+
+# Restart the ssh service:
+sudo service ssh restart
+
+
+#### Firewall
+sudo apt-get install -y ufw
+
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# open ssh port  *** USE the port you set into /etc/ssh/sshd_config
+sudo ufw allow 8201/tcp
+sudo ufw deny ssh
+
+# open http port
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# open ntp port : to sync the clock of your machine
+sudo ufw allow 123/udp
+
+# turn on firewall
+sudo ufw enable
+
+# check the status
+sudo ufw status
+
+> return to dev and log on with the new ssh port
