@@ -10,6 +10,7 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Stage1', link: '/stage1/' },
+      { text: 'Stage2', link: '/stage2/' },
     ],
     sidebar: [
       {
@@ -23,6 +24,14 @@ module.exports = {
         children: [
           '/stage1/',
           '/stage1/server.md'
+        ]
+      },
+      {
+        title: 'Stage2',
+        children: [
+          '/stage2/',
+          '/stage2/client',
+          '/stage2/deploy'
         ]
       }
     ]
