@@ -1,7 +1,5 @@
 # Stage 2 - Debian Server with Nginx in Docker, NPM, Node, Vue
 
-> Build on stage 1: secure server, and add Nginx (web server) in docker container with Vue client
-
 ## Workshop Instructions
 ``` 
 git checkout -b stage2
