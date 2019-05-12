@@ -4,6 +4,7 @@ module.exports = {
   title: 'Docker and small scale production ready apps',
   description: 'As a developer you want to setup your solution for both development and production',
   base: "/may14/",
+  port: 8081,
   themeConfig: {
     displayAllHeaders: true,
     nav: [

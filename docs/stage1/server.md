@@ -1,6 +1,8 @@
 # Server setup
 
-## SSH Key
+## How to generate a SSH Key
+> Skip this step during the workshop. You will be given the key pair.
+
 On your development box use ```ssh-keygen``` from ```openssh``` to generate a public private key.  KF is the name
 we'll give to our key files.
 
@@ -9,20 +11,24 @@ we'll give to our key files.
 
 Also take a read of [ECDSA](https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/)
 
- 
 ```
 export KF=may14-ecdsa
 # Generate key, enter a password or passphrase when prompted
 ssh-keygen -t ecdsa -b 256 -f $KF
 ```
 
-Basically, we've choosen a good enough key for our sample application. Consider increasing the key length if your application or server
+The above is a good enough key for our sample application. Consider increasing the key length if your application or server
 resources become more valuable to hackers.  Also consider using a different password/passphrase for your SSH key than
 you later use for the user on the server who can get root access.
 
-Link copy of the private and public key into the default key folder. The following is for a linux/mac user.
+## Place your private public key files
+> During the workshop you will be given the key files: may14-ecdsa and may14-ecdsa.pub
+
+Link or copy the private and public key files into the default key folder. The following is for a linux/mac user.  
+KF is set to match the root name of the key files.
 
 ```
+export KF=may14-ecdsa
 ln -s $KF ~/.ssh/$KF
 ln -s $KF.pub ~/.ssh/$KF.pub
 ls -al ~/.ssh
@@ -35,6 +41,8 @@ cat $KF.pub
 ```
 
 ## Digital Ocean server setup
+> Skip this step during the workshop. You will be given the IP address of a server
+
 - Log onto DO
 - create a droplet; (e.g. Debian, 1GB ($5/mth) Toronto or San Fran)
 - add ssh key (see above)
@@ -43,39 +51,29 @@ cat $KF.pub
 
 ## First log on
 
-Even though we will block password SSH you will still need a good password for your sudo user. (```sudo user``` means a use that
-become ```root``` and run root commands). You can use the following to generate a reasonable password for a new user. This script
-might also be useful to generate a series of user accounts with difficult to hack passwords. Change the length from 8 to something
-more secure, like 15, if desired.
-```
-# generate random password for user
-PW=$(date +%s|sha256sum|base64|head -c 8)
-echo ------------------ SAVE THIS: $PW
-```
-Or instead of a cryptic password you may consider a passphrases [with caution](https://security.stackexchange.com/questions/178015/passphrase-vs-password-entropy)
-Make your choice based on
-1. the value of your data
-2. remember that you'll need to type in the password everytime you log onto your server and run sudo
+> On you development machine ssh onto your server.  Set SERVER = ip address of your server
 
-
-Do log onto the new server copy the IP address from DO control panel and ssh in.
+Do log onto the new server via ssh. 
 
 ```
 export SERVER=159.89.117.81
 ssh root@$SERVER
 
 ```
+The server has been configured to accept ssh from someone with the private key file we will use for the workshop. 
 
-Prepare the system.  You can modify the leading environment variables and then copy paste the following into your root ssh session.
 
+## Prepare the system.
+If you want to really build your own app server then modify the following environment variables.
+(Below are some instructions for generating user passwords.) 
+For the workshop use the following.
+Copy paste the following into the root ssh session you have open on the server.
 ```
 # export PKS='replace with the contents of the public key file on your development box'
 export PKS='ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIrLLdQGnMofGqBWFnapwWORcxM4lU64bBmkVqWjq2VzrrBKzAhKgSSUzwOpRNV2yqusT46M+iMWt9rx1d9keEA='
 export UN=may14
 export UH=/home/$UN
 export PW=YzFmYWEw
-
-
 
 echo adding a favorite alias
 alias ll='ls -lahG'
@@ -120,25 +118,24 @@ chown -R $UN:$UN $UH/.ssh
 
 ```
 
-Return to your development machine and open another terminal session and test logging on as as the new user. Try out ```sudo``` too.
+Return to your development machine and open another terminal session and test logging on as as the new (sudo-capable) user.
 
 > On your development workstation:
 ```
-# on dev
 echo Log into server $SERVER as user 
 ssh may14@$SERVER
 ```
-(recall SERVER was setup on your dev instance above)
+(recall SERVER was setup above. It is the IP address of your server)
 
 > On the server check that user can use ```sudo```
 ```
-# on the server
+# on the server you are now the new user. Test sudo
 sudo su
 # enter the user password to become sudoer
 ```
 
+## Securing ssh access to the server
 At this point you have a new server with a new user which can log on and run sudo commands.  
-
 Let's secure the access via ssh  
 - change the ssh port to 8201 (choose a different port as you wish)
 - disable password log on
@@ -147,6 +144,9 @@ Let's secure the access via ssh
 
 ```
 # on the server - secure ssh
+
+# you are the new user.. right?
+whoami
 
 cd /etc/ssh
 # backup and remove the existing file ssh config file
@@ -165,7 +165,7 @@ Port 8201
 PermitRootLogin no
 PasswordAuthentication no
 AllowGroups ssh-access
-# add this to avoid problem with multiple sshd processes
+# very optional for the workshop ... add this to avoid problem with multiple sshd processes
 ClientAliveInterval 600
 ClientAliveCountMax 3
 ```
@@ -225,4 +225,20 @@ Next time you log in don't forget the ssh port has changed
 ```
 ssh may14@159.203.14.23 -p 8201 
 ```
+
+
+## A way to generate strong passwords
+Even though we will block password SSH you will still need a good password for your sudo user. (```sudo user``` means a use that
+become ```root``` and run root commands). You can use the following to generate a reasonable password for a new user. This script
+might also be useful to generate a series of user accounts with difficult to hack passwords. Change the length from 8 to something
+more secure, like 15, if desired.
+```
+# generate random password for user
+PW=$(date +%s|sha256sum|base64|head -c 8)
+echo ------------------ SAVE THIS: $PW
+```
+Or instead of a cryptic password you may consider a passphrases [with caution](https://security.stackexchange.com/questions/178015/passphrase-vs-password-entropy)
+Make your choice based on
+1. the value of your data
+2. remember that you'll need to type in the password everytime you log onto your server and run sudo
 

@@ -6,10 +6,10 @@ You will be hacked. All the time.  Every server is under constant attack.  They 
 looking to steal data and often of more value to the hacker, they want your computational resources. They want your machine
 to stage attacks on other servers.
 
-Yet you want to focus on developing your application.  This stage 1 recipe will solve 95% of your problems.  Yet, if your
-application is going to contain valuable information you're going to need to go beyond this recipe. You should hire an expert.
-What we have here is a recipe suitable for most small scale applications.  We'll set up our server in a way that makes
-it difficult for the hacker. We'll have a system that is harder to hack than the value they will get.
+Yet you want to focus on developing your application.  This stage 1 recipe will solve 95% of your problems.  This recipe
+is good enough for most small scale applications. If you're going to have valuable information then you're going to need to go beyond this recipe.
+This recipe sets up our server in a way that makes
+it difficult, not impossible, for the hacker. Yet, we'll have a system that is harder to hack than the value they will get. So they'll leave you alone.
 
 Secure server
 1. ![checked] No SSH access via password (public key cryptography only)
@@ -22,3 +22,7 @@ Secure server
 
 [checked]: ../images/checked-20.png "checked"
 [unchecked]: ../images/unchecked-20.png "unchecked"
+
+## Workshop Instructions
+
+Log onto a newly created Debian based production server and follow the steps in [server setup](./server.md)
