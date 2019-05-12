@@ -5,5 +5,8 @@
   },
   "devDependencies": {
     "vuepress": "^0.14.11"
+  },
+  "dependencies": {
+    "@vue/cli": "^3.7.0"
   }
 }
