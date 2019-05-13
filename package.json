@@ -1,8 +1,28 @@
 {
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "client:start": "cd client/my-project && npm run serve",
+    "client:build": "cd client/my-project && npm run build",
+    "docked:start": "docker-compose -f stage2-docker-compose.yml up --build",
+    "docked:stop": "docker-compose -f stage2-docker-compose.yml down",
+    "docked:on:prod:start": "docker-compose -f stage2-docker-compose.yml -f stage2-prod-docker-compose.yml up --build",
+    "docked:on:prod:stop": "docker-compose -f stage2-docker-compose.yml -f stage2-prod-docker-compose.yml down",
+    "docked:full:start": "npm run client:build && npm run docked:start",
+    "docked:full:on:prod:start": "npm run client:build && npm run docked:on:prod:start"
   },
+  "scriptsComments": {
+    "docs:dev": "Start the vuepress doc server",
+    "docs:build": "Build the vuepress doc files",
+    "client:start": "Start the client in dev HRM mode. Inject address to api server. Match port to what is in docker compose file",
+    "client:build": "Compile client into static site. Inject address to api server. Match port to what is in docker compose file",
+    "client:build:on:prod": "Ditto but with production domain",
+    "docked:start": "Start the docker containers. Connections: client http://localhost port spec'd in compose file (8083)",
+    "docked:on:prod:start": "Start docker containers like and for the prod server. Can use on dev box. Connections: client http://(localhost/domain) port 80.",
+    "docked:full:start": "Ditto but first build the static client side.",
+    "docked:full:on:prod:start": "Ditto but first build the static client side."
+  },
+
   "devDependencies": {
     "vuepress": "^0.14.11"
   },
