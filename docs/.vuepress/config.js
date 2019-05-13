@@ -30,8 +30,9 @@ module.exports = {
         title: 'Stage2',
         children: [
           '/stage2/',
-          '/stage2/client',
-          '/stage2/deploy'
+          '/stage2/2.client',
+          '/stage2/3.deploy',
+          '/stage2/4.scripts'
         ]
       }
     ]
