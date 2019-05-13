@@ -89,4 +89,4 @@ sudo apt-get install -y nodejs
 ```
 
 ## Sample web site
-Go to the next part and set up the sample web site. Next: [client](./client.md)
+Go to the next part and set up the sample web site. Next: [client](./2.client.md)
