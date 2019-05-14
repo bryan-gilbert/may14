@@ -1,0 +1,31 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        - DOMAIN=localhost
+        - API_PORT=3000
+    ports:
+      - "8083:80"
+    volumes:
+      - "./client/my-project/dist/:/usr/share/nginx/html/"
+  simple-app:
+    # Docker container names must be unique, so don't use container_name if you want to scale your services
+    # container_name: simple-app
+    restart: always
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3003"  # The API service listens on the second port and docker maps this to the first port for use outside the container.
+    environment:
+      - API_PORT=3003
+      - API_HOST=localhost
+      - CLIENT_HOST=localhost
+      - CLIENT_PORT=8083
+    entrypoint:
+      - npm
+      - run
+      - start:dev

@@ -1,0 +1,18 @@
+version: "3"
+services:
+  nginx:
+    build:
+      args:
+        - DOMAIN=146.34.56.78
+    ports:
+      - "80:80"
+    restart: "always"
+    environment:
+      - NODE_ENV=production
+  simple-app:
+    environment:
+      - NODE_ENV=production
+    entrypoint:
+      - npm
+      - run
+      - start
