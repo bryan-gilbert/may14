@@ -1,19 +1,19 @@
-# Stage 2 - Express server, Vue client
+# Stage 3 - Express server, Vue client
 
 > We'll now add an API server to our system and update our Vue client to use the API.
 
 ## Workshop Instructions
 ```
-git checkout -b stage3
+git checkout -b stage3.2
 ```
 
 ## Express Server
 
 There is too little time during the workshop to describe how to build the sample express server that is now in our
-project
+project.
 
-
-For my-project here are the changes made
+## Client updates
+For the client web site ```my-project``` has the following changes
 - ```npm install -D pug-plain-loader pug``` so we can create Vue components with pug. Lean and mean pug.
 - ```npm install axios``` so we can make API calls
 - Captured logo images for Express and Node and display those.
@@ -23,6 +23,6 @@ For my-project here are the changes made
 - Create new ```ReverseWord``` component
 - Add form to ReverseWord 
 
-## ReverseWord Vue component
+### ReverseWord Vue component
 This component has a simple form. Enter some text and press the button. That triggers
 the loadReverse method that sends a request to our API server. 
