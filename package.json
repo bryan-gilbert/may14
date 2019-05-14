@@ -4,7 +4,7 @@
     "docs:build": "vuepress build docs",
     "client:start": "cd client/my-project && VUE_APP_API_URL=http://localhost:3000 npm run serve",
     "client:build": "cd client/my-project && VUE_APP_API_URL=http://localhost:3000 npm run build",
-    "client:build:on:prod": "cd client/my-project && VUE_APP_API_URL=http://REPLACE_WITH_DOMAIN npm run build",
+    "client:build:on:prod": "cd client/my-project && VUE_APP_API_URL=http://jbrjga.com/api npm run build",
     "docked:start": "docker-compose -f stage3-b-docker-compose.yml up --build",
     "docked:stop": "docker-compose -f stage3-b-docker-compose.yml down",
     "docked:on:prod:start": "docker-compose -f stage3-b-docker-compose.yml -f stage3-b-prod-docker-compose.yml up --build",

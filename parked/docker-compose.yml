@@ -1,0 +1,43 @@
+version: "3"
+services:
+  simple-app:
+    # Docker container names must be unique, so don't use container_name if you want to scale your services
+    # container_name: simple-app
+    restart: always
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3007:3004"  # The API service listens on the second port and docker maps this to the first port for use outside the container.
+    depends_on: # use depends_on instead of the deprecated links
+      - mevn-app-mongo
+    env_file:
+      - ./.env_site
+    environment:
+      - API_PORT=3004
+      - NODE_ENV=development
+      - MONGODB_HOST=mevn-app-mongo
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGODB_USER
+      - MONGODB_PWORD
+      - MONGODB_NAME
+      - SAMPLE_1
+  mevn-app-mongo:
+    # container_name: mevn-app-mongo-container
+    image: mongo
+    environment:
+      - MONGODB_USER
+      - MONGODB_PWORD
+      - MONGODB_PORT=${MONGODB_PORT}
+      # provide your credentials here
+      # https://github.com/docker-library/docs/blob/master/mongo/content.md
+      # https://stackoverflow.com/questions/42912755/how-to-create-a-db-for-mongodb-container-on-start-up/42917632#42917632
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
+    # volumes:
+      # - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    # no --auth is needed here as presence of username and password add this option automatically
+    command: mongod --port ${MONGODB_PORT}
