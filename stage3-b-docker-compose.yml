@@ -23,7 +23,7 @@ services:
     ports:
       - "3000:3003"  # The API service listens on the second port and docker maps this to the first port for use outside the container.
     environment:
-      - API_PORT=3003
+      - API_PORT=3000
       - API_HOST=localhost
       - CLIENT_HOST=localhost
       - CLIENT_PORT=8083
