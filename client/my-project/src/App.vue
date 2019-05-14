@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" width="160">
+    &nbsp;
+    <img alt="Node logo" src="./assets/node-npm.png" width="200">
+    <img alt="Express logo" src="./assets/express.png" width="200">
+    <reverse-word msg="Our DevOp sample app"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ReverseWord from './components/ReverseWord.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    ReverseWord
   }
 }
 </script>

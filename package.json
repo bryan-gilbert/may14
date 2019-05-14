@@ -2,14 +2,15 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "client:start": "cd client/my-project && npm run serve",
-    "client:build": "cd client/my-project && npm run build",
-    "docked:start": "docker-compose -f stage2-docker-compose.yml up --build",
-    "docked:stop": "docker-compose -f stage2-docker-compose.yml down",
-    "docked:on:prod:start": "docker-compose -f stage2-docker-compose.yml -f stage2-prod-docker-compose.yml up --build",
-    "docked:on:prod:stop": "docker-compose -f stage2-docker-compose.yml -f stage2-prod-docker-compose.yml down",
+    "client:start": "cd client/my-project && VUE_APP_API_URL=http://localhost:3000 npm run serve",
+    "client:build": "cd client/my-project && VUE_APP_API_URL=http://localhost:3000 npm run build",
+    "client:build:on:prod": "cd client/my-project && VUE_APP_API_URL=http://REPLACE_WITH_DOMAIN npm run build",
+    "docked:start": "docker-compose -f stage3-b-docker-compose.yml up --build",
+    "docked:stop": "docker-compose -f stage3-b-docker-compose.yml down",
+    "docked:on:prod:start": "docker-compose -f stage3-b-docker-compose.yml -f stage3-b-prod-docker-compose.yml up --build",
+    "docked:on:prod:stop": "docker-compose -f stage3-b-docker-compose.yml -f stage3-b-prod-docker-compose.yml down",
     "docked:full:start": "npm run client:build && npm run docked:start",
-    "docked:full:on:prod:start": "npm run client:build && npm run docked:on:prod:start"
+    "docked:full:on:prod:start": "npm run client:build:on:prod && npm run docked:on:prod:start"
   },
   "scriptsComments": {
     "docs:dev": "Start the vuepress doc server",
@@ -17,7 +18,7 @@
     "client:start": "Start the client in dev HRM mode. Inject address to api server. Match port to what is in docker compose file",
     "client:build": "Compile client into static site. Inject address to api server. Match port to what is in docker compose file",
     "client:build:on:prod": "Ditto but with production domain",
-    "docked:start": "Start the docker containers. Connections: client http://localhost port spec'd in compose file (8083)",
+    "server:start": "start the server in dev HRM mode",
     "docked:on:prod:start": "Start docker containers like and for the prod server. Can use on dev box. Connections: client http://(localhost/domain) port 80.",
     "docked:full:start": "Ditto but first build the static client side.",
     "docked:full:on:prod:start": "Ditto but first build the static client side."
