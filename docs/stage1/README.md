@@ -22,7 +22,13 @@ Secure server
 
 [checked]: ../images/checked-20.png "checked"
 [unchecked]: ../images/unchecked-20.png "unchecked"
+[do-s0]: ../images/do-s0.png "do-s0"
+[do-s1]: ../images/do-s1.png "do-s1"
 
 ## Workshop Instructions
 
 Log onto a newly created Debian based production server and follow the steps in [server setup](./server.md)
+
+![do-s0]
+
+![do-s1]
