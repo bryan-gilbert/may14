@@ -3,10 +3,20 @@ FROM nginx
 ARG DOMAIN
 ARG API_PORT
 
-RUN mkdir -p /etc/nginx/sites-enabled/
-WORKDIR /etc/nginx/sites-enabled/
+RUN mkdir -p /usr/share/nginx/error-pages/
 
-COPY ./nginx.site ./nginx.site
-RUN   sed -i "s|DOMAIN|${DOMAIN}|g" ./nginx.site
-RUN   sed -i "s|API_PORT|${API_PORT}|g" ./nginx.site
+WORKDIR /usr/share/nginx/error-pages/
+COPY ./custom*.html ./
+
+WORKDIR /etc/nginx/
+COPY ./nginx.conf ./nginx.conf
+RUN   sed -i "s|DOMAIN|${DOMAIN}|g" ./nginx.conf
+RUN   sed -i "s|API_PORT|${API_PORT}|g" ./nginx.conf
+
+WORKDIR conf.d/
+RUN rm default.conf
+
+COPY ./default.conf ./default.conf
+RUN   sed -i "s|DOMAIN|${DOMAIN}|g" ./default.conf
+RUN   sed -i "s|API_PORT|${API_PORT}|g" ./default.conf
 

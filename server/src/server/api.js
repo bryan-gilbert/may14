@@ -42,6 +42,8 @@ export default class Api {
 
   apiError() {
     const {app} = this
+    const {config} = this
+
     // App.get('/', (req, res) => {
     //   debug('Got error a / request')
     //   res.send('from error\n')
@@ -81,7 +83,6 @@ export default class Api {
 
     // Catch 404 and forward to error handler
     function fourOhFour(req, res) {
-      const {config} = this
       const {url} = req
       const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
       const env = config.env

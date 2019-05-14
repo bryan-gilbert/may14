@@ -10,7 +10,7 @@ git checkout -b stage3.2
 ## Express Server
 
 There is too little time during the workshop to describe how to build the sample express server that is now in our
-project.
+project. 
 
 ## Client updates
 For the client web site ```my-project``` has the following changes
