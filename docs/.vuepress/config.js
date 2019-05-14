@@ -11,6 +11,7 @@ module.exports = {
       { text: 'Home', link: '/' },
       { text: 'Stage1', link: '/stage1/' },
       { text: 'Stage2', link: '/stage2/' },
+      { text: 'Stage3', link: '/stage3/' },
     ],
     sidebar: [
       {
@@ -33,6 +34,12 @@ module.exports = {
           '/stage2/2.client',
           '/stage2/3.deploy',
           '/stage2/4.scripts'
+        ]
+      },
+      {
+        title: 'Stage3',
+        children: [
+          '/stage3/'
         ]
       }
     ]
