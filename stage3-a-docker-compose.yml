@@ -1,0 +1,13 @@
+version: "3"
+services:
+  simple-app:
+    # Docker container names must be unique, so don't use container_name if you want to scale your services
+    # container_name: simple-app
+    restart: always
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3003"  # The API service listens on the second port and docker maps this to the first port for use outside the container.
+    environment:
+      - API_PORT=3003

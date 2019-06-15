@@ -1,0 +1,18 @@
+version: "3"
+services:
+  nginx:
+    build:
+      args:
+        - DOMAIN=jbrjga.com
+    ports:
+      - "80:80"
+    restart: "always"
+    environment:
+      - NODE_ENV=production
+  simpleapp:
+    environment:
+      - NODE_ENV=production
+    entrypoint:
+      - npm
+      - run
+      - start:prod
