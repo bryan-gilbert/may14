@@ -1,0 +1,56 @@
+sudo apt-get update
+
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+# verify the finger print is 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88
+
+# get the stable version
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+### Install Docker-CE
+sudo apt-get update
+
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+# verify all is well ...
+sudo docker run hello-world
+
+### Install Docker-Compose
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo docker-compose --version
+
+### Install NPM, Node
+curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+
+sudo apt-get install -y nodejs
+
+> cd to where you want to put your project files
+
+git clone https://github.com/bryan-gilbert/may14.git
+
+cd may14
+
+git checkout stage2
+
+cd client
+npm install
+
+# previously the Vue site was created with:
+# node  node_modules/@vue/cli/bin/vue.js create my-project
+# now just need to install
+
+cd my-project
+npm install
+
+npm run build
+
+cd ../.. # back to repo root
+
+sudo docker-compose -f d-c.yml up

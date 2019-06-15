@@ -1,0 +1,11 @@
+version: "3"
+services:
+  nginx:
+    container_name: nginx-stage2
+    build:
+      context: ./nginx-stage2
+      dockerfile: Dockerfile
+    ports:
+      - "8083:80"
+    volumes:
+      - "./client-stage2/my-project/dist/:/usr/share/nginx/html/"
