@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Server setup | Docker and small scale production ready apps</title>
+    <meta name="description" content="As a developer you want to setup your solution for both development and production">
+    
+    
+    <link rel="preload" href="/may14/assets/css/0.styles.67ed0360.css" as="style"><link rel="preload" href="/may14/assets/js/app.e3ae97d2.js" as="script"><link rel="preload" href="/may14/assets/js/8.140a8825.js" as="script"><link rel="prefetch" href="/may14/assets/js/10.8aa34345.js"><link rel="prefetch" href="/may14/assets/js/11.c7b0931a.js"><link rel="prefetch" href="/may14/assets/js/12.a211795f.js"><link rel="prefetch" href="/may14/assets/js/13.44b477ad.js"><link rel="prefetch" href="/may14/assets/js/2.deead8d0.js"><link rel="prefetch" href="/may14/assets/js/3.231c2442.js"><link rel="prefetch" href="/may14/assets/js/4.c1874e43.js"><link rel="prefetch" href="/may14/assets/js/5.a9a5104f.js"><link rel="prefetch" href="/may14/assets/js/6.63edfdf6.js"><link rel="prefetch" href="/may14/assets/js/7.8835d2d4.js"><link rel="prefetch" href="/may14/assets/js/9.cb0d3982.js">
+    <link rel="stylesheet" href="/may14/assets/css/0.styles.67ed0360.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/may14/" class="home-link router-link-active"><!----> <span class="site-name">Docker and small scale production ready apps</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/may14/" class="nav-link">Home</a></div><div class="nav-item"><a href="/may14/stage1/" class="nav-link router-link-active">Stage1</a></div><div class="nav-item"><a href="/may14/stage2/" class="nav-link">Stage2</a></div><div class="nav-item"><a href="/may14/stage3/" class="nav-link">Stage3</a></div><div class="nav-item"><a href="/may14/certbot/" class="nav-link">Certbot</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/may14/" class="nav-link">Home</a></div><div class="nav-item"><a href="/may14/stage1/" class="nav-link router-link-active">Stage1</a></div><div class="nav-item"><a href="/may14/stage2/" class="nav-link">Stage2</a></div><div class="nav-item"><a href="/may14/stage3/" class="nav-link">Stage3</a></div><div class="nav-item"><a href="/may14/certbot/" class="nav-link">Certbot</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>Project</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Stage1</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/may14/stage1/" class="sidebar-link">Stage 1 - Secure production server</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/may14/stage1/#workshop-instructions" class="sidebar-link">Workshop Instructions</a></li></ul></li><li><a href="/may14/stage1/server.html" class="active sidebar-link">Server setup</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#how-to-generate-a-ssh-key" class="sidebar-link">How to generate a SSH Key</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#place-your-private-public-key-files" class="sidebar-link">Place your private public key files</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#digital-ocean-server-setup" class="sidebar-link">Digital Ocean server setup</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#first-log-on" class="sidebar-link">First log on</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#prepare-the-system" class="sidebar-link">Prepare the system.</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#securing-ssh-access-to-the-server" class="sidebar-link">Securing ssh access to the server</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#firewall" class="sidebar-link">Firewall</a></li><li class="sidebar-sub-header"><a href="/may14/stage1/server.html#a-way-to-generate-strong-passwords" class="sidebar-link">A way to generate strong passwords</a></li></ul></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage2</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage3</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Certbot</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="server-setup"><a href="#server-setup" aria-hidden="true" class="header-anchor">#</a> Server setup</h1> <h2 id="how-to-generate-a-ssh-key"><a href="#how-to-generate-a-ssh-key" aria-hidden="true" class="header-anchor">#</a> How to generate a SSH Key</h2> <blockquote><p>Skip this step during the workshop. You will be given the key pair.</p></blockquote> <p>On your development box use <code>ssh-keygen</code> from <code>openssh</code> to generate a public private key.  KF is the name
+we'll give to our key files.</p> <blockquote><p>&quot;the continuous increase in security requirements could very well render
+ECDSA the de-facto solution in the future.&quot; <a href="https://www.ssl.com/article/comparing-ecdsa-vs-rsa/" target="_blank" rel="noopener noreferrer">Comparing ECDSA vs RSA<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote> <p>Also take a read of <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/" target="_blank" rel="noopener noreferrer">ECDSA<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>export KF=may14-ecdsa
+# Generate key, enter a password or passphrase when prompted
+ssh-keygen -t ecdsa -b 256 -f $KF
+</code></pre></div><p>The above is a good enough key for our sample application. Consider increasing the key length if your application or server
+resources become more valuable to hackers.  Also consider using a different password/passphrase for your SSH key than
+you later use for the user on the server who can get root access.</p> <h2 id="place-your-private-public-key-files"><a href="#place-your-private-public-key-files" aria-hidden="true" class="header-anchor">#</a> Place your private public key files</h2> <blockquote><p>During the workshop you will be given the key files: may14-ecdsa and may14-ecdsa.pub</p></blockquote> <p>Link or copy the private and public key files into the default key folder. The following is for a linux/mac user.<br>
+KF is set to match the root name of the key files.</p> <div class="language- extra-class"><pre class="language-text"><code>export KF=may14-ecdsa
+ln -s $KF ~/.ssh/$KF
+ln -s $KF.pub ~/.ssh/$KF.pub
+ls -al ~/.ssh
+
+# register ssh key in your local environment, enter passphrase when prompted
+ssh-add $KF
+
+# When you need to copy and past the public key just cat the contents
+cat $KF.pub
+</code></pre></div><h2 id="digital-ocean-server-setup"><a href="#digital-ocean-server-setup" aria-hidden="true" class="header-anchor">#</a> Digital Ocean server setup</h2> <blockquote><p>Skip this step during the workshop. You will be given the IP address of a server</p></blockquote> <ul><li>Log onto DO</li> <li>create a droplet; (e.g. Debian, 1GB ($5/mth) Toronto or San Fran)</li> <li>add ssh key (see above)</li> <li>name your new droplet</li></ul> <h2 id="first-log-on"><a href="#first-log-on" aria-hidden="true" class="header-anchor">#</a> First log on</h2> <blockquote><p>On you development machine ssh onto your server.  Set SERVER = ip address of your server</p></blockquote> <p>Do log onto the new server via ssh.</p> <div class="language- extra-class"><pre class="language-text"><code>export SERVER=159.89.117.81
+ssh root@$SERVER
+
+</code></pre></div><p>The server has been configured to accept ssh from someone with the private key file we will use for the workshop.</p> <h2 id="prepare-the-system"><a href="#prepare-the-system" aria-hidden="true" class="header-anchor">#</a> Prepare the system.</h2> <p>If you want to really build your own app server then modify the following environment variables.
+(Below are some instructions for generating user passwords.)
+For the workshop use the following.
+Copy paste the following into the root ssh session you have open on the server.</p> <div class="language- extra-class"><pre class="language-text"><code># export PKS='replace with the contents of the public key file on your development box'
+export PKS='ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIrLLdQGnMofGqBWFnapwWORcxM4lU64bBmkVqWjq2VzrrBKzAhKgSSUzwOpRNV2yqusT46M+iMWt9rx1d9keEA='
+export UN=may14
+export UH=/home/$UN
+export PW=YzFmYWEw
+
+echo adding a favorite alias
+alias ll='ls -lahG'
+
+echo Set timezone
+timedatectl set-timezone America/Vancouver
+
+echo DigitalOcean recommends next line. See https://www.digitalocean.com/community/questions/debian-9-3-droplet-issues-with-useradd
+apt-get remove -y unscd
+
+echo Update system
+apt-get update &amp; apt-get -y upgrade
+
+echo Installing essentials
+apt-get install -y sudo curl git-core
+
+addgroup ssh-access
+
+echo Create user: $UN
+# Create the user; add to group; create home directory (-m); set password hashed
+# useradd -G users,sudo,www-data,ssh-access -m -s /bin/bash -p $(echo $PW | openssl passwd -1 -stdin) $UN
+useradd -G users,sudo,ssh-access -m -s /bin/bash -p $(echo $PW | openssl passwd -1 -stdin) $UN
+
+echo Stash favourite alias in shell init for user
+echo &quot;alias ll='ls -lahG'&quot; &gt;&gt; $UH/.bashrc 
+
+echo User created to remove the user created run 
+echo   deluser $UN
+
+echo Show information about the user: 
+getent passwd $UN
+id -Gn $UN
+
+echo Placing SSH keys into users home directory  
+mkdir -p $UH/.ssh
+
+echo $PKS &gt;&gt; $UH/.ssh/authorized_keys
+cat $UH/.ssh/authorized_keys
+
+chmod 700 $UH/.ssh
+chmod 600 $UH/.ssh/*
+chown -R $UN:$UN $UH/.ssh
+
+</code></pre></div><p>Return to your development machine and open another terminal session and test logging on as as the new (sudo-capable) user.</p> <blockquote><p>On your development workstation:</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>echo Log into server $SERVER as user 
+ssh may14@$SERVER
+</code></pre></div><p>(recall SERVER was setup above. It is the IP address of your server)</p> <blockquote><p>On the server check that user can use <code>sudo</code></p></blockquote> <div class="language- extra-class"><pre class="language-text"><code># on the server you are now the new user. Test sudo
+sudo su
+# enter the user password to become sudoer
+</code></pre></div><h2 id="securing-ssh-access-to-the-server"><a href="#securing-ssh-access-to-the-server" aria-hidden="true" class="header-anchor">#</a> Securing ssh access to the server</h2> <p>At this point you have a new server with a new user which can log on and run sudo commands.<br>
+Let's secure the access via ssh</p> <ul><li>change the ssh port to 8201 (choose a different port as you wish)</li> <li>disable password log on</li> <li>disable root ssh access</li> <li>allow users in the ssh-access group to ssh onto the machine</li></ul> <div class="language- extra-class"><pre class="language-text"><code># on the server - secure ssh
+
+# you are the new user.. right?
+whoami
+
+cd /etc/ssh
+# backup and remove the existing file ssh config file
+sudo mv sshd_config sshd_config.bak
+# create a new file
+sudo nano sshd_config 
+# Copy the text in the copy of sshd_config here in the deploy folder
+# Paste into the server side. If prompted by nano paste with control characters.
+# Save file
+sudo diff sshd_config.bak sshd_config
+# Check the differences with the following
+</code></pre></div><p>OR instead of the above directly edit <code>/etc/ssh/sshd_config</code> and add or change the following:</p> <div class="language- extra-class"><pre class="language-text"><code>Port 8201 
+PermitRootLogin no
+PasswordAuthentication no
+AllowGroups ssh-access
+# very optional for the workshop ... add this to avoid problem with multiple sshd processes
+ClientAliveInterval 600
+ClientAliveCountMax 3
+</code></pre></div><p>export PORT=8201
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BAK
+echo '*************** Secure sshd_config ******************'
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+sed -i &quot;s/#Port 22/Port $PORT/g&quot; /etc/ssh/sshd_config
+sed -i 's/ClientAliveInterval 120/ClientAliveInterval 600/g' /etc/ssh/sshd_config
+sed -i '$ a ClientAliveCountMax 3' /etc/ssh/sshd_config
+sed -i '$ a AllowGroups ssh-access' /etc/ssh/sshd_config
+diff --color=always /etc/ssh/sshd_config.BAK /etc/ssh/sshd_config</p> <div class="language- extra-class"><pre class="language-text"><code># Restart the ssh service:
+sudo service ssh restart
+</code></pre></div><h2 id="firewall"><a href="#firewall" aria-hidden="true" class="header-anchor">#</a> Firewall</h2> <div class="language- extra-class"><pre class="language-text"><code>sudo apt-get install -y ufw
+</code></pre></div><p>Then set up the firewall.  Allow the port you set for ssh above</p> <div class="language- extra-class"><pre class="language-text"><code>sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# open ssh port
+sudo ufw allow 8201/tcp
+sudo ufw deny ssh
+
+# open http port
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# open ntp port : to sync the clock of your machine
+sudo ufw allow 123/udp
+
+# turn on firewall
+sudo ufw enable
+
+# check the status
+sudo ufw status
+</code></pre></div><p>Should report:</p> <div class="language- extra-class"><pre class="language-text"><code>Status: active
+
+To                         Action      From
+--                         ------      ----
+8201/tcp                   ALLOW       Anywhere                  
+22/tcp                     DENY        Anywhere                  
+80/tcp                     ALLOW       Anywhere                  
+443/tcp                    ALLOW       Anywhere                  
+123/udp                    ALLOW       Anywhere                  
+8201/tcp (v6)              ALLOW       Anywhere (v6)             
+22/tcp (v6)                DENY        Anywhere (v6)             
+80/tcp (v6)                ALLOW       Anywhere (v6)             
+443/tcp (v6)               ALLOW       Anywhere (v6)             
+123/udp (v6)               ALLOW       Anywhere (v6)
+</code></pre></div><p>Next time you log in don't forget the ssh port has changed</p> <div class="language- extra-class"><pre class="language-text"><code>ssh may14@159.203.14.23 -p 8201 
+</code></pre></div><h2 id="a-way-to-generate-strong-passwords"><a href="#a-way-to-generate-strong-passwords" aria-hidden="true" class="header-anchor">#</a> A way to generate strong passwords</h2> <p>Even though we will block password SSH you will still need a good password for your sudo user. (<code>sudo user</code> means a use that
+become <code>root</code> and run root commands). You can use the following to generate a reasonable password for a new user. This script
+might also be useful to generate a series of user accounts with difficult to hack passwords. Change the length from 8 to something
+more secure, like 15, if desired.</p> <div class="language- extra-class"><pre class="language-text"><code># generate random password for user
+PW=$(date +%s|sha256sum|base64|head -c 8)
+echo ------------------ SAVE THIS: $PW
+</code></pre></div><p>Or instead of a cryptic password you may consider a passphrases <a href="https://security.stackexchange.com/questions/178015/passphrase-vs-password-entropy" target="_blank" rel="noopener noreferrer">with caution<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+Make your choice based on</p> <ol><li>the value of your data</li> <li>remember that you'll need to type in the password everytime you log onto your server and run sudo</li></ol></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/may14/stage1/" class="prev router-link-active">
+          Stage 1 - Secure production server
+        </a></span> <span class="next"><a href="/may14/stage2/">
+          Stage 2 - Debian Server with Nginx in Docker, NPM, Node, Vue
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/may14/assets/js/app.e3ae97d2.js" defer></script><script src="/may14/assets/js/8.140a8825.js" defer></script>
+  </body>
+</html>

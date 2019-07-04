@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Install Certbot on Debian | Docker and small scale production ready apps</title>
+    <meta name="description" content="As a developer you want to setup your solution for both development and production">
+    
+    
+    <link rel="preload" href="/may14/assets/css/0.styles.67ed0360.css" as="style"><link rel="preload" href="/may14/assets/js/app.e3ae97d2.js" as="script"><link rel="preload" href="/may14/assets/js/7.8835d2d4.js" as="script"><link rel="prefetch" href="/may14/assets/js/10.8aa34345.js"><link rel="prefetch" href="/may14/assets/js/11.c7b0931a.js"><link rel="prefetch" href="/may14/assets/js/12.a211795f.js"><link rel="prefetch" href="/may14/assets/js/13.44b477ad.js"><link rel="prefetch" href="/may14/assets/js/2.deead8d0.js"><link rel="prefetch" href="/may14/assets/js/3.231c2442.js"><link rel="prefetch" href="/may14/assets/js/4.c1874e43.js"><link rel="prefetch" href="/may14/assets/js/5.a9a5104f.js"><link rel="prefetch" href="/may14/assets/js/6.63edfdf6.js"><link rel="prefetch" href="/may14/assets/js/8.140a8825.js"><link rel="prefetch" href="/may14/assets/js/9.cb0d3982.js">
+    <link rel="stylesheet" href="/may14/assets/css/0.styles.67ed0360.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/may14/" class="home-link router-link-active"><!----> <span class="site-name">Docker and small scale production ready apps</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/may14/" class="nav-link">Home</a></div><div class="nav-item"><a href="/may14/stage1/" class="nav-link">Stage1</a></div><div class="nav-item"><a href="/may14/stage2/" class="nav-link">Stage2</a></div><div class="nav-item"><a href="/may14/stage3/" class="nav-link">Stage3</a></div><div class="nav-item"><a href="/may14/certbot/" class="nav-link router-link-active">Certbot</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/may14/" class="nav-link">Home</a></div><div class="nav-item"><a href="/may14/stage1/" class="nav-link">Stage1</a></div><div class="nav-item"><a href="/may14/stage2/" class="nav-link">Stage2</a></div><div class="nav-item"><a href="/may14/stage3/" class="nav-link">Stage3</a></div><div class="nav-item"><a href="/may14/certbot/" class="nav-link router-link-active">Certbot</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>Project</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage1</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage2</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage3</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Certbot</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/may14/certbot/" class="sidebar-link">Certbot</a></li><li><a href="/may14/certbot/install.html" class="active sidebar-link">Install Certbot on Debian</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="install-certbot-on-debian"><a href="#install-certbot-on-debian" aria-hidden="true" class="header-anchor">#</a> Install Certbot on Debian</h1> <blockquote><p>Installing certbot was more difficult that it should be</p></blockquote> <p>ON a clean fresh Digital Ocean Debian 9 server it takes some effort to install certbot.
+Many sites recommend three steps.  e.g. (https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)</p> <div class="language- extra-class"><pre class="language-text"><code>add-apt-repository ppa:certbot/certbot
+apt update
+apt install python-certbot-apache
+</code></pre></div><p>But the first command gets this error</p> <div class="language- extra-class"><pre class="language-text"><code>gpg: keybox '/tmp/tmpr4yek906/pubring.gpg' created
+gpg: failed to start the dirmngr '/usr/bin/dirmngr': No such file or directory
+gpg: connecting dirmngr at '/run/user/0/gnupg/d.rnajt48ww3h99oopj7cmnhwy/S.dirmngr' failed: No such file or directory
+gpg: keyserver receive failed: No dirmngr
+</code></pre></div><p>Another place says to (https://linuxhostsupport.com/blog/install-lets-encrypt-ssl-certificates-using-certbot/_</p> <div class="language- extra-class"><pre class="language-text"><code>apt-get install software-properties-common python-software-properties
+add-apt-repository ppa:certbot/certbot
+apt-get update
+apt-get install python-certbot-apache
+</code></pre></div><p>Error</p> <div class="language- extra-class"><pre class="language-text"><code>Package python-software-properties is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  software-properties-common
+
+E: Package 'python-software-properties' has no installation candidate
+</code></pre></div><p>So I try installing just <code>software-properties-common</code> and then <code>add-apt-repository ppa:certbot/certbot</code> but the same dirmngr error appears.</p> <p>Let’s look at the official Certbot site. https://certbot.eff.org/lets-encrypt/debianstretch-apache.html</p> <ol><li>Ssh onto server with account that has sudo privileges.</li> <li>Instal backport https://backports.debian.org/Instructions/</li> <li>Install certbot</li></ol> <div class="language- extra-class"><pre class="language-text"><code>apt-get install certbot python-certbot-apache -t stretch-backports
+</code></pre></div><p>Step 2 is hard.
+Quote:</p> <blockquote><p>Add backports to your sources.list
+<br> <code>deb http://deb.debian.org/debian stretch-backports main</code> <br>
+to your sources.list (or add a new file with the &quot;.list&quot; extension to /etc/apt/sources.list.d/) You can instead use https when the apt-transport-https package is installed.
+<br>
+Run
+<code>apt-get update</code></p></blockquote> <p>But it doesn’t say how to add the backport to the sources.list</p> <p>A friend who is a true expert in Debian recommended this approach:</p> <div class="language- extra-class"><pre class="language-text"><code>echo &quot;deb http://deb.debian.org/debian stretch-backports main&quot; | tee -a /etc/apt/sources.list
+</code></pre></div><p>The complete set of steps to use are</p> <div class="language- extra-class"><pre class="language-text"><code>echo &quot;deb http://deb.debian.org/debian stretch-backports main&quot; | tee -a /etc/apt/sources.list
+apt-get update
+apt-get install certbot python-certbot-apache -t stretch-backports
+#verify
+certbot --version
+
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/may14/certbot/" class="prev router-link-active">
+          Certbot
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/may14/assets/js/app.e3ae97d2.js" defer></script><script src="/may14/assets/js/7.8835d2d4.js" defer></script>
+  </body>
+</html>

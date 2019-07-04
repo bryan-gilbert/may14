@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker and Ngnix | Docker and small scale production ready apps</title>
+    <meta name="description" content="As a developer you want to setup your solution for both development and production">
+    
+    
+    <link rel="preload" href="/may14/assets/css/0.styles.67ed0360.css" as="style"><link rel="preload" href="/may14/assets/js/app.e3ae97d2.js" as="script"><link rel="preload" href="/may14/assets/js/10.8aa34345.js" as="script"><link rel="prefetch" href="/may14/assets/js/11.c7b0931a.js"><link rel="prefetch" href="/may14/assets/js/12.a211795f.js"><link rel="prefetch" href="/may14/assets/js/13.44b477ad.js"><link rel="prefetch" href="/may14/assets/js/2.deead8d0.js"><link rel="prefetch" href="/may14/assets/js/3.231c2442.js"><link rel="prefetch" href="/may14/assets/js/4.c1874e43.js"><link rel="prefetch" href="/may14/assets/js/5.a9a5104f.js"><link rel="prefetch" href="/may14/assets/js/6.63edfdf6.js"><link rel="prefetch" href="/may14/assets/js/7.8835d2d4.js"><link rel="prefetch" href="/may14/assets/js/8.140a8825.js"><link rel="prefetch" href="/may14/assets/js/9.cb0d3982.js">
+    <link rel="stylesheet" href="/may14/assets/css/0.styles.67ed0360.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/may14/" class="home-link router-link-active"><!----> <span class="site-name">Docker and small scale production ready apps</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/may14/" class="nav-link">Home</a></div><div class="nav-item"><a href="/may14/stage1/" class="nav-link">Stage1</a></div><div class="nav-item"><a href="/may14/stage2/" class="nav-link router-link-active">Stage2</a></div><div class="nav-item"><a href="/may14/stage3/" class="nav-link">Stage3</a></div><div class="nav-item"><a href="/may14/certbot/" class="nav-link">Certbot</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/may14/" class="nav-link">Home</a></div><div class="nav-item"><a href="/may14/stage1/" class="nav-link">Stage1</a></div><div class="nav-item"><a href="/may14/stage2/" class="nav-link router-link-active">Stage2</a></div><div class="nav-item"><a href="/may14/stage3/" class="nav-link">Stage3</a></div><div class="nav-item"><a href="/may14/certbot/" class="nav-link">Certbot</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>Project</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage1</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Stage2</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/may14/stage2/" class="sidebar-link">Stage 2 - Debian Server with Nginx in Docker, NPM, Node, Vue</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/may14/stage2/#workshop-instructions" class="sidebar-link">Workshop Instructions</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/#introduction" class="sidebar-link">Introduction</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/#workshop-instructions-2" class="sidebar-link">Workshop Instructions</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/#install-docker-on-debian" class="sidebar-link">Install Docker on Debian</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/#install-npm-node" class="sidebar-link">Install NPM, Node</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/#sample-web-site" class="sidebar-link">Sample web site</a></li></ul></li><li><a href="/may14/stage2/2.client.html" class="sidebar-link">Stage 2 - Sample web site / client</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/may14/stage2/2.client.html#installation" class="sidebar-link">Installation</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/2.client.html#workshop-instructions" class="sidebar-link">Workshop Instructions</a></li></ul></li><li><a href="/may14/stage2/3.nginx.html" class="active sidebar-link">Docker and Ngnix</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/may14/stage2/3.nginx.html#workshop-instructions" class="sidebar-link">Workshop Instructions</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/3.nginx.html#the-docker-files" class="sidebar-link">The docker files</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/3.nginx.html#launch-the-app-on-dev" class="sidebar-link">Launch the app on dev</a></li><li class="sidebar-sub-header"><a href="/may14/stage2/3.nginx.html#launch-the-app-on-prod" class="sidebar-link">Launch the app on prod</a></li></ul></li><li><a href="/may14/stage2/4.scripts.html" class="sidebar-link">Stage 2 - Scripts</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/may14/stage2/4.scripts.html#workshop-instructions" class="sidebar-link">Workshop Instructions</a></li></ul></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Stage3</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Certbot</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="docker-and-ngnix"><a href="#docker-and-ngnix" aria-hidden="true" class="header-anchor">#</a> Docker and Ngnix</h1> <blockquote><p>Set up docker-compose to run nginx and serve the sample web site.</p></blockquote> <h2 id="workshop-instructions"><a href="#workshop-instructions" aria-hidden="true" class="header-anchor">#</a> Workshop Instructions</h2> <p>Read over the description of how to create the Docker files and then see below for instructions on how to launch the app.</p> <h2 id="the-docker-files"><a href="#the-docker-files" aria-hidden="true" class="header-anchor">#</a> The docker files</h2> <p>By now you've set up and built the sample web client as described previously.
+We now need to serve the site with a production web server and we'll use nginx.
+We want to run nginx in its own docker container and it turns out this is very easy to do.</p> <div class="language- extra-class"><pre class="language-text"><code>mkdir nginx
+echo 'FROM nginx' &gt; nginx/DOCKERFILE
+</code></pre></div><p>We'll add more to this file soon.</p> <p>nginx/DOCKERFILE</p> <div class="language- extra-class"><pre class="language-text"><code>FROM nginx
+</code></pre></div><p>The docker-compose file is more interesting. It links our static web site to the nginx.</p> <p>./stage2-docker-compose.yml</p> <div class="language- extra-class"><pre class="language-text"><code>version: &quot;3&quot;
+services:
+  nginx:
+    container_name: nginx-stage2
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - &quot;8083:80&quot;
+    volumes:
+      - &quot;./client-stage2/my-project/dist/:/usr/share/nginx/html/&quot;
+</code></pre></div><p>Note the port mapping sets us up for development. On your development box open a browser and navigate to
+http://localhost:8083.  What you see is the same as what will be served from the production server.
+But on a production server we need to serve pages on port 80. We also want to set the nginx flag to restart after a reboot.
+To do this we create an override file. Overrides replace values in the main docker file.</p> <p>./stage2-prod-override.yml</p> <div class="language- extra-class"><pre class="language-text"><code>version: &quot;3&quot;
+services:
+  nginx:
+    ports:
+      - &quot;80:80&quot;
+    restart: &quot;always&quot;      
+</code></pre></div><h2 id="launch-the-app-on-dev"><a href="#launch-the-app-on-dev" aria-hidden="true" class="header-anchor">#</a> Launch the app on dev</h2> <p>To run production on your development box:</p> <div class="language- extra-class"><pre class="language-text"><code>docker-compose -f stage2-docker-compose.yml up --build
+</code></pre></div><p>See your app at http://localhost:8083</p> <h3 id="mac-setup"><a href="#mac-setup" aria-hidden="true" class="header-anchor">#</a> Mac setup</h3> <p>Did you see an error like the following on the Mac development environment?</p> <blockquote><p>ERROR: for nginx-stage2  Cannot start service nginx: b'Mounts denied:
+The path ... is not shared from OS X
+and is not known to Docker. You can configure shared paths from Docker -&gt; Preferences... -&gt; File Sharing.
+See https://docs.docker.com/docker-for-mac/osxfs/#namespaces for more info.'</p></blockquote> <p>As it says you need to open the Docker preferences and add in the path to your web site static files.</p> <h2 id="launch-the-app-on-prod"><a href="#launch-the-app-on-prod" aria-hidden="true" class="header-anchor">#</a> Launch the app on prod</h2> <p>Use ssh to return to your production server and return to your project folder.</p> <div class="language- extra-class"><pre class="language-text"><code># on production
+
+cd client-stage2
+npm install # only needed once per install
+cd my-project
+npm install # only needed after updating Vue project packages
+
+npm run build  # do this after changes on you web site.
+
+cd ../..  # return to project root
+
+# Launch the app with production overrides
+sudo docker-compose -f stage2-docker-compose.yml -f stage2-prod-override.yml up --build
+</code></pre></div><p>After a moment you will see</p> <div class="language- extra-class"><pre class="language-text"><code>Creating nginx-stage2 ... done
+Attaching to nginx-stage2
+</code></pre></div><p>This is when you can open a browser and see your app at http://&lt;your server ip address&gt;</p> <p>This is end of stage 2.</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/may14/stage2/2.client.html" class="prev">
+          Stage 2 - Sample web site / client
+        </a></span> <span class="next"><a href="/may14/stage2/4.scripts.html">
+          Stage 2 - Scripts
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/may14/assets/js/app.e3ae97d2.js" defer></script><script src="/may14/assets/js/10.8aa34345.js" defer></script>
+  </body>
+</html>
